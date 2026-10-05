@@ -1,0 +1,17 @@
+data/
+.env
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+node_modules/
+.npm-cache/
+.next/
+dist/
+coverage/
+*.log
+/.mini_kek_passphrase
+/.mini_sse_kek
+/admin/.session_key
+/apps/api/logs/
+/filerldb2/
+/m9333/

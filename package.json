@@ -1,0 +1,12 @@
+{
+  "name": "the-photo-gallery",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Photo Gallery local application",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=22.5"
+  }
+}

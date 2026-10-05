@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: photo-gallery-api
+    runtime: node
+    plan: free
+    region: singapore
+    rootDir: apps/api
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 24.21.0
+      - key: NODE_ENV
+        value: production
+      - key: WEB_ORIGIN
+        value: https://photo-gallery-web.onrender.com
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: OBJECT_STORAGE_REGION
+        value: auto
+      - key: VIDEO_UPLOAD_MODE
+        value: object-storage
+
+  - type: web
+    name: photo-gallery-web
+    runtime: node
+    plan: free
+    region: singapore
+    rootDir: apps/web
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 24.21.0
+      - key: NEXT_PUBLIC_API_URL
+        value: https://photo-gallery-api.onrender.com/api
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      - key: NEXT_PUBLIC_VIDEO_UPLOAD_MODE
+        value: object-storage
